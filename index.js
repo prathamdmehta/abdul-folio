@@ -122,3 +122,93 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray(".projects__row").forEach((row, index) => {
+    gsap.from(row, {
+      scrollTrigger: {
+        trigger: row,
+        start: "top 80%", // Adjust as needed
+        toggleActions: "play none none reverse",
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      delay: index * 0.3 // Stagger animation start
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate the heading
+  gsap.from(".heading-sec__main, .heading-sec__sub", {
+    scrollTrigger: {
+      trigger: ".heading-sec__main",
+      start: "top 80%", // Adjust as needed
+      toggleActions: "play none none reverse",
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    stagger: 0.3
+  });
+
+  // Animate each form field
+  gsap.from(".contact__form-field", {
+    scrollTrigger: {
+      trigger: ".contact__form",
+      start: "top 80%", // Adjust as needed
+      toggleActions: "play none none reverse",
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    stagger: 0.3
+  });
+
+  // Animate the submit button
+  gsap.from(".contact__btn", {
+    scrollTrigger: {
+      trigger: ".contact__form",
+      start: "top 80%", // Adjust as needed
+      toggleActions: "play none none reverse",
+    },
+    opacity: 0,
+    scale: 0.8,
+    duration: 1,
+    delay: 1 // Delay to animate after form fields
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate the footer social icons
+  gsap.from(".main-footer__social-cont a", {
+    scrollTrigger: {
+      trigger: ".main-footer__social-cont",
+      start: "top 90%", // Adjust as needed
+      toggleActions: "play none none reverse",
+    },
+    opacity: 0,
+    y: 30,
+    duration: 1,
+    stagger: 0.2
+  });
+
+  // Animate the footer text elements
+  gsap.from(".main-footer__heading-sm, .main-footer__short-desc, .main-footer__lower", {
+    scrollTrigger: {
+      trigger: ".main-footer__upper",
+      start: "top 90%", // Adjust as needed
+      toggleActions: "play none none reverse",
+    },
+    opacity: 0,
+    y: 30,
+    duration: 1,
+    stagger: 0.3
+  });
+});
