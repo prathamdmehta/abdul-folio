@@ -30,13 +30,7 @@ for (let i = 0; i < headerSmallMenuLinks.length; i++) {
   });
 }
 
-// ---
-const headerLogoConatiner = document.querySelector(".header__logo-container");
-
-headerLogoConatiner.addEventListener("click", () => {
-  location.href = "index.html";
-});
-
+// gsap animations
 document.addEventListener("DOMContentLoaded", () => {
   gsap.from(".home-hero__content", {
     duration: 1,
@@ -104,6 +98,21 @@ document.addEventListener("DOMContentLoaded", () => {
       trigger: ".about__content-skills",
       start: "top 80%",
       toggleActions: "play none none none",
+    }
+  });
+
+  //about image animation
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from("#abdulImage", {
+    scale: 0,
+    opacity: 0,
+    duration: 1,
+    ease: "back.out(1)",
+    scrollTrigger: {
+      trigger: "#abdulImage",
+      start: "top 80%",
+      toggleActions: "play none none none"
     }
   });
 
@@ -210,5 +219,52 @@ document.addEventListener("DOMContentLoaded", function() {
     y: 30,
     duration: 1,
     stagger: 0.3
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from(".project-cs-hero__content", {
+    opacity: 0,
+    y: 50,
+    duration: 1.5,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".project-cs-hero",
+      start: "top 80%",
+      end: "top 30%",
+      toggleActions: "play none none none",
+    },
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate the image
+  gsap.from(".project-details__showcase-img", {
+    opacity: 0,
+    x: -100,
+    duration: 1.5,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".project-details__showcase-img-cont",
+      start: "top 85%",
+      toggleActions: "play none none none",
+    },
+  });
+
+  // Animate the content
+  gsap.from(".project-details__content-main", {
+    opacity: 0,
+    x: 100,
+    duration: 1.5,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".project-details__content",
+      start: "top 85%",
+      toggleActions: "play none none none",
+    },
   });
 });
