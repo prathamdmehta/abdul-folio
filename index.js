@@ -268,5 +268,45 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 });
-let copy = document.querySelector(".logos-slide").cloneNode(true);
-document.querySelector(".logos").appendChild(copy);
+
+document.addEventListener("DOMContentLoaded", function () {
+    const logosSlide = document.querySelector(".logos-slide");
+    let scrollInterval;
+
+    // Clone the logosSlide to create an infinite loop effect
+    let copy = logosSlide.cloneNode(true);
+    document.querySelector(".logos").appendChild(copy);
+
+    // Function to start the infinite scroll
+    function startScroll() {
+        scrollInterval = setInterval(() => {
+            logosSlide.scrollBy({ left: 1, behavior: "smooth" });
+            // Reset to the start when the end is reached
+            if (logosSlide.scrollLeft + logosSlide.clientWidth >= logosSlide.scrollWidth) {
+                logosSlide.scrollLeft = 0;
+            }
+        }, 10); // Adjust the speed as needed
+    }
+
+    // Function to stop the infinite scroll
+    function stopScroll() {
+        clearInterval(scrollInterval);
+    }
+
+    // Start the scroll when the page loads
+    startScroll();
+
+    // Handle the page visibility change
+    document.addEventListener("visibilitychange", function () {
+        if (document.visibilityState === "visible") {
+            startScroll();
+        } else {
+            stopScroll();
+        }
+    });
+
+    // Also start the scroll when the window gains focus
+    window.addEventListener("focus", startScroll);
+    window.addEventListener("blur", stopScroll);
+});
+
