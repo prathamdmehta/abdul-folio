@@ -269,6 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+//ininite corrousel
 document.addEventListener("DOMContentLoaded", function () {
     const logosSlide = document.querySelector(".logos-slide");
     let scrollInterval;
@@ -281,7 +282,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function startScroll() {
         scrollInterval = setInterval(() => {
             logosSlide.scrollBy({ left: 1, behavior: "smooth" });
-            // Reset to the start when the end is reached
             if (logosSlide.scrollLeft + logosSlide.clientWidth >= logosSlide.scrollWidth) {
                 logosSlide.scrollLeft = 0;
             }
@@ -305,8 +305,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Also start the scroll when the window gains focus
+    // Handle focus and blur events
     window.addEventListener("focus", startScroll);
     window.addEventListener("blur", stopScroll);
+
+    // For mobile devices: resume scrolling when the window is resized (common when switching orientations)
+    window.addEventListener("resize", function () {
+        startScroll();
+    });
+
+    // Ensure scrolling starts on touch events as well (helpful for mobile devices)
+    window.addEventListener("touchstart", startScroll);
+    window.addEventListener("touchend", startScroll);
 });
+
 
