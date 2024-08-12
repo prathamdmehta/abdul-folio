@@ -17,6 +17,59 @@
       rel="stylesheet"
     />
   </head>
+    <style>
+    @keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.logos {
+  overflow: hidden;
+  padding: 60px 0;
+  background: white;
+  white-space: nowrap;
+  position: relative;
+}
+
+.logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+  width: 130px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+}
+
+.logos:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+}
+
+.logos:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+}
+
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+.logos-slide {
+  display: inline-block;
+  animation: 35s slide infinite linear;
+}
+
+.logos-slide img {
+  height: 20rem;
+  margin: 0 40px;
+  gap: 2rem;
+}
+  </style>
   <body>
     <header class="header">
       <div class="header__content">
@@ -283,6 +336,23 @@
               >
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2 class="heading heading-sec heading-sec__mb-med">
+        <span class="heading-sec__main">Books</span>
+        <span class="heading-sec__sub">
+          Checkout my books section. 
+        </span>
+      </h2>
+      <div class="logos">
+        <div class="logos-slide">
+          <a href="https://notionpress.com/read/the-science-of-storytelling"><img src="./assets/books/storytelling.jpg"/></a>
+          <a href="https://notionpress.com/read/the-fluffy-world-of-pancake"><img src="./assets/books/pancake.jpg" /></a>
+          <a href="https://notionpress.com/read/dracula-1345181"><img src="./assets/books/dracula.jpg" /></a>
+          <a href="https://notionpress.com/read/the-labyrinth-of-serendipity"><img src="./assets/books/labyrinth.jpg" /></a>
+          <a href=""><img src="./assets/books/love.webp" /></a>
         </div>
       </div>
     </section>
